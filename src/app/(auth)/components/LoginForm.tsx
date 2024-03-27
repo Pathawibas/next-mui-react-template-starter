@@ -13,22 +13,18 @@ import {
 import { z } from 'zod'
 import { useMutation } from '@tanstack/react-query'
 
-// Define the form's schema using Zod for validation
+// Define the form's schema using Zod
 const loginFormSchema = z.object({
   phone: z.string().min(10, { message: 'Invalid phone number' }),
 })
 
 // Define the form's data type based on the schema
-interface LoginFormValues {
-  phone: string
-}
+type LoginFormValues = z.infer<typeof loginFormSchema>
 
-// Placeholder login function (should actually implement login logic) and move to service
+// Placeholder login function (should actually implement login logic)
 const loginUser = async (data: LoginFormValues) => {
   console.log('Login data:', data)
-  throw new Error('Login failed')
   // Replace with actual login request
-  // see in RegisterForm
 }
 
 const LoginForm: React.FC = () => {
@@ -58,10 +54,10 @@ const LoginForm: React.FC = () => {
   return (
     <Box sx={{ mt: 1, maxWidth: 360 }}>
       <Typography component="h1" variant="h5">
-        ลงชื่อเข้าใช้บัญชี
+        Sign In
       </Typography>
       <Typography component="p" color="text.secondary">
-        กรุณากรอกรายละเอียดของคุณเพื่อเข้าสู่ระบบ
+        Please enter your details to sign in
       </Typography>
       <Box
         component="form"
@@ -93,7 +89,7 @@ const LoginForm: React.FC = () => {
           sx={{ mt: 3, mb: 2 }}
           disabled={mutation.isPending}
         >
-          {mutation.isPending ? 'Loading...' : 'เข้าสู่ระบบ'}
+          {mutation.isPending ? 'Loading...' : 'Sign In'}
         </Button>
         {mutation.isError && (
           <Typography color="error" sx={{ mt: 2 }}>

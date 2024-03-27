@@ -9,10 +9,10 @@ const LoginPage: React.FC = () => {
     <Grid container minHeight="100vh">
       <Grid xs={5} sx={{ backgroundColor: '#f7f7f7', p: '50px' }}>
         <Typography component="h1" variant="h6">
-          ระบบสำรวจ
+          Login Page
         </Typography>
         <Typography component="h1" variant="h6">
-          และการคัดกรองเบื้องต้น
+          login to your account
         </Typography>
       </Grid>
       <Grid
